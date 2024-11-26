@@ -1,12 +1,15 @@
-const http = require('http')
+const express = require('express')
+const app = express()
 const porta = process.env.PORT 
 
-const server = http.createServer((req, res) => {
-    res.statusCode = 200
-    res.writeHead(200,{'Content-Type': 'text/plain'})
-    res.end('CFB cursos')
+app.get('/', (req, res) => {
+    res.send('Seja bem vindo!')
 })
 
-server.listen(porta || 3000, () => {
+app.get('/canal', (req, res) => {
+    res.json({canal: 'CFB cursos'})
+})
+
+app.listen(porta || 3000, () => {
     console.log(`Servidor rodando em http://localhost:${porta}`)
 })
