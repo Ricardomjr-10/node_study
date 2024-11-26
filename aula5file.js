@@ -6,6 +6,7 @@ const server = http.createServer((req, res) => {
  fs.appendFile('teste.txt', 'Curos de Node',(err, arquivo) => {
     if (err) throw err
     console.log('Arquivo criado com sucesso!')
+    res.end()
  })
 })
 
