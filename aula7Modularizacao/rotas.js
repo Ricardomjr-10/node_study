@@ -23,3 +23,5 @@ rotas.get('/:cursoid', (req, res) => {
         res.status(200).json(cursoInfo)
     }
 })
+
+module.exports = rotas
