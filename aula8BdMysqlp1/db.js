@@ -21,7 +21,13 @@ const insereCliente = async (cliente) => {
     const sql = 'INSERT INTO cliente_node (nome, idade) VALUES (?, ?)'
     const valores = [cliente.nome, cliente.idade]
     await connection.query(sql, valores)
-    
 }
 
-module.exports = {todosClientes, insereCliente}
+const atualizaCliente = async (id, cliente) => {
+    const connection = await conectar()
+    const sql = 'UPDATE cliente_node SET nome = ?, idade = ? WHERE id = ?'
+    const valores = [cliente.nome, cliente.idade, id]
+    await connection.query(sql, valores)
+}
+
+module.exports = {todosClientes, insereCliente, atualizaCliente}
