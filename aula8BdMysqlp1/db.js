@@ -16,4 +16,12 @@ const todosClientes = async () => {
     return await rows
 }
 
-module.exports = {todosClientes}
+const insereCliente = async (cliente) => {
+    const connection = await conectar()
+    const sql = 'INSERT INTO cliente_node (nome, idade) VALUES (?, ?)'
+    const valores = [cliente.nome, cliente.idade]
+    await connection.query(sql, valores)
+    
+}
+
+module.exports = {todosClientes, insereCliente}
