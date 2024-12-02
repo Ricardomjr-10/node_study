@@ -16,4 +16,4 @@ const todosClientes = async () => {
     return await rows
 }
 
-module.exports = {}
+module.exports = {todosClientes}
