@@ -6,7 +6,7 @@ const formidable = require('formidable')
 const fs = require('fs')
 
 const server = http.createServer((req, res) => {
-    if (req.url == '/fileupload') {
+    if (req.url == '/envioDeArquivo') {
         const form = new formidable.IncomingForm()
         form.parse(req, (err, fields, files) => {
             const urlantiga = files.filetoupload.path
@@ -17,14 +17,16 @@ const server = http.createServer((req, res) => {
                 res.end()
             })
         })
+    } else {
+
+        res.writeHead(200, {'Content-Type': 'text/html'})
+        res.write('<form action="envioDeArquivo" method="post" enctype="multipart/form-data">')
+        res.write('<input type="file" name="filetoupload"><br>')
+        res.write('<input type="submit" value="upload">')
+        res.write('</form>')
+        return res.end()
     }
 
-    res.writeHead(200, {'Content-Type': 'text/html'})
-    res.write('<form action="fileupload" method="post" enctype="multipart/form-data">')
-    res.write('<input type="file" name="filetoupload"><br>')
-    res.write('<input type="submit" value="upload">')
-    res.write('</form>')
-    return res.end()
 })
 
 server.listen(port)
