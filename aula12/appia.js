@@ -26,8 +26,14 @@ const server = http.createServer((req, res) => {
       });
     });
   } else {
-    res.statusCode = 404;
-    res.end('Página não encontrada');
+    // res.statusCode = 404;
+    // res.end('Página não encontrada');
+    res.writeHead(200, {'Content-Type': 'text/html'})
+    res.write('<form action="/upload" method="POST" enctype="multipart/form-data">')
+    res.write('<input type="file" name="filetoupload"><br>')
+    res.write('<input type="submit" value="Enviar">')
+    res.write('</form>')
+    return res.end()
   }
 });
 
