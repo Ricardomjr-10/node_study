@@ -5,12 +5,13 @@ const port = process.env.PORT || 3000;
 const formidable = require('formidable')
 const fs = require('fs')
 
+
 const server = http.createServer((req, res) => {
     if (req.url == '/upload') {
         const form = new formidable.IncomingForm()
         form.parse(req, (erro, fields, files) => {
-            const oldpath = files.filetoupload.filepath
-            const newpath = 'C:/home/ricardo/Documentos/envio/' + files.filetoupload.originalFilename
+            const oldpath = files.filetoupload.path
+            const newpath = 'C:/home/ricardo/Documentos/envio/' + files.filetoupload.path
             fs.rename(oldpath, newpath, (erro) => {
                 if (erro) throw erro
                 res.write('Arquivo carregado com sucesso!')

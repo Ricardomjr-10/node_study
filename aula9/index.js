@@ -14,9 +14,11 @@ EventEmitter.on('fim', final)
 const porta = process.env.PORT || 3000
 const retorno = () => console.log(`Servidor rodando na porta ${porta}`)
 const server = http.createServer((req, res) => {
+   //emitir o evendo
     EventEmitter.emit('msg')
     res.writeHead(200, {'Content-Type': 'text/plain'})
     res.write('CBF cursos')
+    //emitir o evento
     EventEmitter.emit('fim')
     res.end()
 })
