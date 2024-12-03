@@ -15,8 +15,13 @@ async function run() {
       canal: "CFB Cursos"
     };
 
-    const result = await collection.insertOne(doc);
-    console.log(`A document was inserted with the _id: ${result.insertedId}`);
+    //const result = await collection.insertOne(doc);
+    //console.log(`A document was inserted with the _id: ${result.insertedId}`);
+
+    const result = await collection.findOne({}, (res) => {
+      console.log(res)
+    });
+    //console.log(`A document was inserted with the _id: ${result.insertedId}`);
   } finally {
     await client.close();
   }
