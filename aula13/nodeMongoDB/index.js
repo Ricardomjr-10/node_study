@@ -1,7 +1,8 @@
-const mongodb = require('mongodb').MongoClient
+const {MongoClient }= require('mongodb')
 const url = "mongodb+srv://ricardomjr2:lGKU9Ah8c6K1IU0H@cluster0.6vpip.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 
-mongodb.connect(url, (erro, banco) => {
+const client = new MongoClient(url)
+client.connect(url, (erro, banco) => {
     if (erro) throw erro
     const dbo = banco.db("cfbcursos")
     const obj = {
