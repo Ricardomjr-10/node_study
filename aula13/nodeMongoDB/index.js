@@ -7,4 +7,10 @@ mongodb.connect(url, (erro, banco) => {
     const obj = {
         curso: "Curso de Node.js",
          canal: "CFB Cursos"}
+    const colecao = "cursos"     
+    dbo.collection(colecao).insertOne(obj, (erro, resultado) => {
+        if (erro) throw erro
+        console.log(" 1 novo curso inserido")
+        banco.close()
+    })
 })
